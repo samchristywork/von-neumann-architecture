@@ -1,5 +1,10 @@
 package main
 
+const (
+	ALU_ADD = 0b0000
+	ALU_SUB = 0b0001
+)
+
 func full_adder(a bit, b bit, carry_in bit) (sum bit, carry_out bit) {
 	sum = xor_3(a, b, carry_in)
 	carry_out = or(and(a, b), and(carry_in, xor(a, b)))
@@ -41,8 +46,8 @@ func alu(a [8]bit, b [8]bit, opcode [4]bit, carry_in bit) (out [8]bit, status [5
 	//TODO: carry out bit, zero bit, negative bit, overflow bit, parity bit
 
 	var results [16][13]bit
-	results[0] = add_8_bit(a, b, 0)
-	results[1] = sub_8_bit(a, b, 1)
+	results[ALU_ADD] = add_8_bit(a, b, 0)
+	results[ALU_SUB] = sub_8_bit(a, b, 1)
 
 	result := mux_4_16(opcode, results)
 
