@@ -42,6 +42,12 @@ func control() {
 			regB.load(lookahead, 0)
 			regB.load(lookahead, 1)
 			i++
+		} else if match(instruction, decimel_to_byte(PRINT_REG_A)) == 1 { // Print reg A
+			regA.print()
+		} else if match(instruction, decimel_to_byte(PRINT_REG_B)) == 1 { // Print reg B
+			regB.print()
+		} else if match(instruction, decimel_to_byte(PRINT_REG_C)) == 1 { // Print reg C
+			regC.print()
 		} else if match(instruction, decimel_to_byte(ADD)) == 1 { // Add reg A and B into reg C
 			out, _ := alu(regA.read(), regB.read(), decimel_to_nibble(ALU_ADD), 0)
 			regC.load(out, 0)
