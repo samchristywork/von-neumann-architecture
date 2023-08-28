@@ -65,6 +65,7 @@ func control() {
 			i = byte_to_decimel(lookahead) - 1
 		} else {
 			fmt.Printf("Unknown instruction: %v\n", instruction)
+			return
 		}
 	}
 }
